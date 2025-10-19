@@ -1,0 +1,155 @@
+/**
+ * TD Link Polygonjs Viewer Helpers - Bricks Element CSS
+ */
+
+/* Helper controls container */
+.td-helpers-inside-bricks {
+    margin-top: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    clear: both;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header bar */
+.td-helpers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.td-helpers-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.td-helpers-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: #666;
+}
+
+.td-helpers-toggle:hover {
+    color: #0073aa;
+}
+
+/* Controls container */
+.td-helpers-controls {
+    padding: 15px;
+    transition: max-height 0.3s ease;
+}
+
+.td-helpers-controls.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Control styles */
+.td-helpers-inside-bricks .slider-control,
+.td-helpers-inside-bricks .number-control,
+.td-helpers-inside-bricks .text-control,
+.td-helpers-inside-bricks .checkbox-control,
+.td-helpers-inside-bricks .dropdown-control {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.td-helpers-inside-bricks .slider-control:last-child,
+.td-helpers-inside-bricks .number-control:last-child,
+.td-helpers-inside-bricks .text-control:last-child,
+.td-helpers-inside-bricks .checkbox-control:last-child,
+.td-helpers-inside-bricks .dropdown-control:last-child {
+    margin-bottom: 0;
+}
+
+/* Labels */
+.td-helpers-inside-bricks label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+
+.td-helpers-inside-bricks .checkbox-control label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.td-helpers-inside-bricks .checkbox-control input {
+    margin-right: 8px;
+}
+
+/* Inputs */
+.td-helpers-inside-bricks input[type="range"] {
+    width: 100%;
+    margin: 0;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #e0e0e0;
+    -webkit-appearance: none;
+}
+
+.td-helpers-inside-bricks input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2271b1;
+    cursor: pointer;
+}
+
+.td-helpers-inside-bricks input[type="number"],
+.td-helpers-inside-bricks input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.td-helpers-inside-bricks select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 32px;
+    background-color: #fff;
+}
+
+/* Checkbox */
+.td-helpers-inside-bricks input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive styling */
+@media (max-width: 767px) {
+    .td-helpers-inside-bricks .slider-control,
+    .td-helpers-inside-bricks .number-control,
+    .td-helpers-inside-bricks .text-control,
+    .td-helpers-inside-bricks .dropdown-control {
+        margin-bottom: 15px;
+    }
+    
+    .td-helpers-header h4 {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,751 @@
+/**
+ * 3D-Link Customizer Styles
+ */
+
+/* Unified Customizer Container */
+.td-unified-customizer {
+    margin: 30px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Product Variations Section */
+.td-product-variations-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.td-product-variations-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Make WooCommerce variations look more integrated */
+.td-product-variations-section .variations {
+    margin: 0;
+}
+
+.td-product-variations-section .variations td.label {
+    width: 30%;
+    padding: 12px 15px 12px 0;
+    font-weight: 500;
+    color: #555;
+}
+
+.td-product-variations-section .variations td.value {
+    padding: 12px 0;
+}
+
+.td-product-variations-section .variations select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.td-product-variations-section .variations select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Style the variation wrapper to match our custom styles */
+.td-product-variations-section .td-variation-wrapper {
+    margin-bottom: 20px;
+}
+
+.td-product-customizer {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.td-product-customizer h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    padding-bottom: 10px;
+}
+
+.td-product-customizer h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+}
+
+.td-viewer {
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.td-viewer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Unified styling for variation options and parameter groups */
+.td-unified-customizer .single_variation_wrap {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Match button styles across variations and parameters */
+.td-unified-customizer button,
+.td-unified-customizer .button,
+.td-unified-customizer .single_add_to_cart_button {
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Parameter group headers to match variation section */
+.td-product-customizer .customizer-group h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Customizer groups */
+.customizer-group {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.customizer-group:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.customizer-group h4 {
+    margin-top: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Common control styles */
+.slider-control,
+.number-control,
+.text-control,
+.checkbox-control,
+.color-control,
+.dropdown-control {
+    margin-bottom: 15px;
+}
+
+.slider-control label,
+.number-control label,
+.text-control label,
+.color-control > label,
+.dropdown-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+    min-width: 100px; /* Reduced min-width to allow more space for inputs */
+    max-width: 40%; /* Prevent very long labels from pushing controls too far */
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.checkbox-control label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-control label input {
+    margin-right: 8px;
+}
+
+/* Layout for slider controls */
+.slider-control {
+    margin-bottom: 15px;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Header row for parameter name and value input */
+.slider-control-header {
+    display: flex;
+    flex-wrap: nowrap; /* Keep items inline when possible */
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+/* Label styling */
+.slider-control > label {
+    display: inline-block;
+    flex: 1; /* Allow label to take available space */
+    margin-right: 20px; /* Space between label and input */
+    min-width: 100px; /* Minimum width */
+    max-width: 60%; /* Maximum width to ensure there's room for the input */
+}
+
+/* Slider container - always on its own row */
+.slider-range-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 0;
+    width: 100%;
+    clear: both; /* Ensure it's on its own row */
+}
+
+.slider-min-value, .slider-max-value {
+    font-size: 12px;
+    color: #666;
+    flex-shrink: 0;
+}
+
+/* Value display with unit - now inline with the label */
+.slider-value-display {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    flex: 0 0 auto; /* Don't shrink */
+    min-width: 105px; /* Minimum size to accommodate input + unit */
+}
+
+.slider-value-input {
+    width: 60px !important;
+    text-align: center !important;
+    margin-right: 5px !important;
+    padding: 4px 8px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+}
+
+.measurement-unit {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    margin-left: 8px !important;
+    font-weight: 600 !important;
+    vertical-align: middle !important;
+    min-width: 30px !important; /* Increased from 20px */
+    height: 34px !important; /* Match input height */
+    position: relative !important;
+    z-index: 999 !important;
+    background: rgba(255,255,255,0.9) !important;
+    padding: 3px 8px !important; /* Increased padding */
+    border-radius: 3px !important;
+    border: 1px solid #999 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+    text-shadow: 0 0 0 transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+}
+
+/* Target specific parent containers to ensure visibility */
+body .td-product-customizer .slider-value-display .measurement-unit,
+body .td-product-customizer .number-input-container .measurement-unit {
+    display: inline-flex !important;
+    position: relative !important;
+    z-index: 999 !important;
+    height: 34px !important; /* Match input height */
+}
+
+/* Force measurement units to be visible even in themes with aggressive CSS */
+.measurement-unit:after {
+    content: attr(data-unit) !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
+    font-weight: 700 !important;
+    border-radius: 3px !important;
+}
+
+/* Number input layout for inline display */
+.number-control {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping unless necessary */
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Create a flexible container to hold label and value together */
+.number-control > label {
+    flex: 1 1 auto; /* Allow growth but maintain minimum width */
+    margin-right: 20px; /* Space between label and input */
+}
+
+/* Number input with range info */
+.number-input-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    margin-left: 0; /* Allow natural flow */
+    flex: 0 0 auto; /* Don't shrink */
+    min-width: 125px; /* Minimum size to accommodate input + unit */
+}
+
+.visible-number-input {
+    width: 80px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 5px 8px !important;
+    font-size: 14px !important;
+}
+
+.number-range-info {
+    width: 100% !important; /* Full width on new line */
+    font-size: 12px !important;
+    color: #666 !important;
+    white-space: nowrap !important;
+    opacity: 0.9 !important;
+    display: block !important;
+    margin-top: 5px !important;
+    text-align: right !important;
+    padding-right: 40px !important; /* Align with the right side of the container */
+}
+
+/* Dropdown select styling */
+.dropdown-control select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3e%3cpath fill='none' d='M0 0h24v24H0z'/%3e%3cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(0,0,0,0.5)'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+}
+
+.dropdown-control select:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.2);
+}
+
+.dropdown-control select option {
+    padding: 8px;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #ddd;
+    outline: none;
+    border-radius: 3px;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 15px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4a90e2;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4a90e2;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #3a80d2;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    background: #3a80d2;
+}
+
+/* Text inputs */
+.text-control input[type="text"],
+.number-control input[type="number"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.text-control input[type="text"]:focus,
+.number-control input[type="number"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(74, 144, 226, 0.2);
+}
+
+/* Color swatches */
+.color-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.color-swatch input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.swatch-color {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    display: inline-block;
+    margin-bottom: 5px;
+    transition: all 0.2s ease;
+}
+
+.swatch-name {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Active color swatch */
+.color-swatch.active .swatch-color {
+    border-color: #333;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.color-swatch.active .swatch-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.color-swatch:hover .swatch-color {
+    transform: scale(1.05);
+}
+
+.color-swatch input:focus + .swatch-color {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+/* RGB Color Controls */
+.rgb-color-control .color-swatches {
+    position: relative;
+}
+
+.rgb-color-control .color-swatches::after {
+    content: "RGB";
+    position: absolute;
+    top: -15px;
+    right: 0;
+    background: #f1f1f1;
+    color: #333;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.rgb-color-control .swatch-color {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+}
+
+/* Enhanced Out-of-Stock Color Styling */
+.color-swatch.out-of-stock {
+    position: relative;
+    border: 1px solid #d63638;
+    background-color: rgba(214, 54, 56, 0.05);
+    border-radius: 4px;
+    padding: 5px;
+    cursor: not-allowed;
+    opacity: 0.9; /* Keep it visible but clearly different */
+}
+
+/* Add a prominent "OUT OF STOCK" label badge */
+.color-swatch.out-of-stock::after {
+    content: 'OUT OF STOCK';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #d63638;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* Diagonal strikethrough effect */
+.color-swatch.out-of-stock .swatch-color::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to top right,
+        transparent calc(50% - 1px),
+        #d63638,
+        transparent calc(50% + 1px)
+    );
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Dimmed overlay */
+.color-swatch.out-of-stock .swatch-color::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+/* Make the text "Out of Stock" below the color more visible */
+.color-swatch.out-of-stock .out-of-stock-label {
+    display: block;
+    font-size: 10px;
+    color: #d63638;
+    font-weight: 600;
+    margin-top: 4px;
+    text-transform: uppercase;
+    background: rgba(214, 54, 56, 0.1);
+    padding: 2px 4px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575px) {
+    .td-product-customizer {
+        padding: 15px;
+    }
+    
+    .customizer-group {
+        padding: 10px;
+    }
+    
+    /* Revert to vertical layout on mobile for better readability */
+    .slider-control, .number-control {
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap !important; /* Allow wrapping on small screens */
+    }
+    
+    /* Override the nowrap setting for small screens */
+    .slider-control > *, .number-control > * {
+        flex-wrap: wrap !important;
+    }
+    
+    .slider-control label, 
+    .number-control label {
+        margin-bottom: 10px;
+        min-width: 100%;
+    }
+    
+    .slider-value-display, 
+    .number-input-container {
+        margin-left: 0;
+        margin-top: 5px !important;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    
+    .slider-value-input {
+        width: 80px !important;
+    }
+    
+    .visible-number-input {
+        width: 80px !important;
+    }
+    
+    .number-range-info {
+        text-align: left !important;
+        padding-right: 0 !important;
+        margin-top: 5px !important;
+    }
+    
+    /* Color swatches */
+    .color-swatches {
+        gap: 5px;
+    }
+    
+    .swatch-color {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .swatch-name {
+        font-size: 11px;
+    }
+    
+    .color-swatch.out-of-stock::after {
+        font-size: 8px;
+        padding: 1px 4px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    /* Dropdowns */
+    .dropdown-control select {
+        padding: 6px 10px;
+        font-size: 13px;
+        background-position: right 6px center;
+        background-size: 16px;
+    }
+    
+    /* Mobile adjustments for slider ranges */
+    .slider-range-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .slider-min-value, .slider-max-value {
+        display: inline-block;
+    }
+    
+    .slider-min-value {
+        float: left;
+    }
+    
+    .slider-max-value {
+        float: right;
+    }
+    
+    .slider-range-container:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/* Parameter Groups for Variation-based Display */
+.parameter-group {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.parameter-group.td-hidden {
+    display: none !important;
+}
+
+.parameter-group h4 {
+    margin: 0 0 15px 0;
+    padding: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.parameter-group.ungrouped-parameters {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.parameter-group.ungrouped-parameters h4 {
+    color: #495057;
+}
+
+/* Animation for parameter group show/hide */
+.parameter-group {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

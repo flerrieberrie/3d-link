@@ -1,0 +1,301 @@
+/**
+ * TD Link Colors Manager Styles
+ */
+
+.td-colors-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.td-colors-main {
+    flex: 2;
+    min-width: 300px;
+}
+
+.td-color-form-container {
+    flex: 1;
+    min-width: 300px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Color List */
+.td-colors-list-container {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.td-colors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.td-color-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Out of stock color item styling */
+.td-color-item.out-of-stock {
+    border: 1px solid #d63638;
+    background-color: rgba(214, 54, 56, 0.05);
+}
+
+/* Add a visible "OUT OF STOCK" label */
+.td-color-item.out-of-stock::after {
+    content: 'OUT OF STOCK';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #d63638;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+/* PERFECT CIRCLE STYLES */
+.color-preview {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    border: 2px solid #fff !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    margin-right: 15px !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+    aspect-ratio: 1/1 !important;
+    position: relative;
+}
+
+/* Add diagonal line through out-of-stock color preview */
+.td-color-item.out-of-stock .color-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to top right,
+        transparent calc(50% - 1px),
+        #d63638,
+        transparent calc(50% + 1px)
+    );
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Add dim overlay to out-of-stock color preview */
+.td-color-item.out-of-stock .color-preview::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+.color-details {
+    flex-grow: 1;
+}
+
+.color-details h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.color-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: #666;
+}
+
+.color-hex {
+    font-family: monospace;
+    font-weight: 500;
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+.color-rgb {
+    font-family: monospace;
+}
+
+.color-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-actions button {
+    padding: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px !important;
+}
+
+.color-actions .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.color-stock-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 30px;
+    background: #f1f1f1;
+    font-size: 12px;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+/* Style when toggled off (out of stock) */
+.color-stock-toggle.out-of-stock {
+    background: #d63638;
+    color: white;
+}
+
+.color-stock-toggle input {
+    margin-right: 0;
+}
+
+.td-colors-empty {
+    padding: 30px;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 4px;
+    color: #666;
+}
+
+/* Form Styles */
+#td-color-form {
+    margin-bottom: 20px;
+}
+
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-fields-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.form-fields-group h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.rgb-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.rgb-field label {
+    font-weight: normal;
+    color: #666;
+}
+
+.color-picker-field {
+    position: relative;
+}
+
+.wp-picker-container {
+    width: 100%;
+}
+
+.wp-picker-container .wp-color-result.button {
+    margin-bottom: 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Usage Instructions */
+.usage-instructions {
+    margin-top: 30px;
+    padding: 15px;
+    border-left: 4px solid #2271b1;
+    background: #f0f6fc;
+}
+
+.usage-instructions h3 {
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.usage-instructions p {
+    margin: 8px 0;
+    color: #555;
+}
+
+/* Admin Notice */
+.td-admin-notice {
+    display: none;
+    margin: 15px 0;
+    padding: 8px 12px;
+    border-radius: 4px;
+}

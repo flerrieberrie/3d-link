@@ -1,0 +1,101 @@
+/**
+ * TD Link Polygonjs Viewer - Bricks Element CSS
+ * Enhanced with responsive support
+ */
+
+/* Root container styles */
+.td-viewer-container {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin-bottom: 2em;
+    transition: width 0.3s ease, height 0.3s ease, max-width 0.3s ease;
+}
+
+/* Default CSS variables that can be overridden by the theme */
+:root {
+    --viewer-width: 100%;
+    --viewer-height: 500px;
+    --viewer-max-width: 1200px;
+    --viewer-border-radius: 8px;
+    --viewer-background: #f8f8f8;
+}
+
+/* Allow CSS variables to be applied to the viewer container */
+.td-viewer-container.bricks-responsive-viewer {
+    border-radius: var(--viewer-border-radius, 8px);
+    background-color: var(--viewer-background, #f8f8f8);
+}
+
+/* Custom mode specific styles */
+.td-viewer-container[data-size-mode="custom"] {
+    width: var(--viewer-width, 100%);
+    height: var(--viewer-height, 500px);
+    max-width: var(--viewer-max-width, none);
+}
+
+/* Iframe styles */
+.td-viewer-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    transition: opacity 0.3s ease;
+}
+
+/* Loading state styles */
+.td-viewer-container.loading iframe {
+    opacity: 0.5;
+}
+
+/* Loading indicator */
+.td-viewer-container.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #333;
+    animation: td-spin 1s linear infinite;
+    z-index: 1;
+}
+
+@keyframes td-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive breakpoints for Bricks builder */
+@media (max-width: 1279px) {
+    /* Desktop and lower */
+    .td-viewer-container.bricks-desktop {
+        /* Desktop specific overrides can go here */
+    }
+}
+
+@media (max-width: 991px) {
+    /* Tablet specific styles */
+    .td-viewer-container.bricks-tablet {
+        /* You can override default styles here */
+    }
+}
+
+@media (max-width: 767px) {
+    /* Mobile specific styles */
+    .td-viewer-container.bricks-mobile {
+        min-height: 300px; /* Ensure minimum height on mobile */
+    }
+    
+    /* Adjust aspect ratio padding for mobile if needed */
+    .td-viewer-container[data-size-mode="responsive"].bricks-mobile {
+        /* You can override padding-bottom for specific aspect ratios if needed */
+    }
+}

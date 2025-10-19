@@ -1,0 +1,468 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TD Link v2.2.0\n"
+"POT-Creation-Date: 2025-04-29 16:00+0200\n"
+"PO-Revision-Date: 2025-04-30 12:23+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: td-link.php:142
+msgid "PolygonJS Integration"
+msgstr "PolygonJS Integratie"
+
+#: td-link.php:146
+msgid "Enable PolygonJS"
+msgstr "PolygonJS inschakelen"
+
+#: td-link.php:153
+msgid "PolygonJS Dist Path"
+msgstr "PolygonJS Dist Pad"
+
+#: td-link.php:155
+msgid "Path to the PolygonJS dist folder relative to site root. Default: 3d/dist"
+msgstr "Pad naar de PolygonJS dist map ten opzichte van de hoofdmap van de site. Standaard: 3d/dist"
+
+#: td-link.php:162
+msgid "Scene Name"
+msgstr "Scènenaam"
+
+#: td-link.php:164
+msgid "Name of the scene to load (used as ?scene=NAME in URL). If left empty, product slug will be used."
+msgstr "Naam van de scène om te laden (gebruikt als ?scene=NAAM in URL). Als leeg gelaten, wordt de product-slug gebruikt."
+
+#: td-link.php:171
+msgid "Legacy 3D Model Folder Path (Deprecated)"
+msgstr "Verouderd 3D-modelmap pad (Afgeraden)"
+
+#: td-link.php:173
+msgid "Old path format. Recommended to use the new fields above instead."
+msgstr "Oude padformaat. Aanbevolen om in plaats daarvan de nieuwe velden hierboven te gebruiken."
+
+#: td-link.php:194
+msgid "3D Link requires WooCommerce to be installed and active."
+msgstr "3D Link vereist dat WooCommerce is geïnstalleerd en actief is."
+
+#: td-link.php:207 class-colors-manager.php:34
+msgid "3D Link Colors"
+msgstr "3D Link Kleuren"
+
+#: td-link.php:225
+msgid "3D Link"
+msgstr "3D Link"
+
+#: td-link.php:234
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: td-link.php:242 class-colors-manager.php:35
+msgid "Colors"
+msgstr "Kleuren"
+
+#: td-link.php:251
+msgid "Settings"
+msgstr "Instellingen"
+
+#: td-link.php:260
+msgid "Customer Models"
+msgstr "Klantmodellen"
+
+#: td-link.php:269
+msgid "File Manager"
+msgstr "Bestandsbeheer"
+
+#: td-link.php:334
+msgid "File Manager not found. Please reinstall the plugin."
+msgstr "Bestandsbeheer niet gevonden. Installeer de plugin opnieuw."
+
+#: includes/class-parameters-manager.php:34
+msgid "PolygonJS Parameters"
+msgstr "PolygonJS Parameters"
+
+#: includes/class-parameters-manager.php:35
+msgid "Expand All"
+msgstr "Alles uitklappen"
+
+#: includes/class-parameters-manager.php:36
+msgid "Collapse All"
+msgstr "Alles inklappen"
+
+#: includes/class-parameters-manager.php:52
+msgid "Add Parameter"
+msgstr "Parameter toevoegen"
+
+#: includes/class-parameters-manager.php:55 class-colors-manager.php:292
+msgid "Add Color"
+msgstr "Kleur toevoegen"
+
+#: includes/class-parameters-manager.php:87
+msgid "Parameter"
+msgstr "Parameter"
+
+#: includes/class-parameters-manager.php:91
+msgid "Move Up"
+msgstr "Omhoog verplaatsen"
+
+#: includes/class-parameters-manager.php:92
+msgid "Move Down"
+msgstr "Omlaag verplaatsen"
+
+#: includes/class-parameters-manager.php:93
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: includes/class-parameters-manager.php:102
+msgid "HTML Snippet"
+msgstr "HTML-fragment"
+
+#: includes/class-parameters-manager.php:104
+msgid "Paste the HTML snippet from PolygonJS. This will be parsed to extract parameter information."
+msgstr "Plak het HTML-fragment van PolygonJS. Dit wordt geanalyseerd om parameterinformatie te extraheren."
+
+#: includes/class-parameters-manager.php:113
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#: includes/class-parameters-manager.php:115
+msgid "Friendly name to show to customers (e.g., \"Number of Shelves\")"
+msgstr "Vriendelijke naam om aan klanten te tonen (bijv. \"Aantal planken\")"
+
+#: includes/class-parameters-manager.php:125
+msgid "Control Type"
+msgstr "Besturingstype"
+
+#: includes/class-parameters-manager.php:127
+msgid "Number Input"
+msgstr "Nummerinvoer"
+
+#: includes/class-parameters-manager.php:128
+msgid "Slider"
+msgstr "Schuifregelaar"
+
+#: includes/class-parameters-manager.php:129
+msgid "Text Input"
+msgstr "Tekstinvoer"
+
+#: includes/class-parameters-manager.php:130
+msgid "Color Selection"
+msgstr "Kleurselectie"
+
+#: includes/class-parameters-manager.php:131
+msgid "Checkbox"
+msgstr "Selectievakje"
+
+#: includes/class-parameters-manager.php:132
+msgid "Dropdown Select"
+msgstr "Dropdown selectie"
+
+#: includes/class-parameters-manager.php:137
+msgid "Hidden Field"
+msgstr "Verborgen veld"
+
+#: includes/class-parameters-manager.php:154
+#: includes/class-parameters-manager.php:191
+#: includes/class-parameters-manager.php:214
+msgid "Default Value"
+msgstr "Standaardwaarde"
+
+#: includes/class-parameters-manager.php:165
+msgid "Min Value"
+msgstr "Minimale waarde"
+
+#: includes/class-parameters-manager.php:172
+msgid "Max Value"
+msgstr "Maximale waarde"
+
+#: includes/class-parameters-manager.php:179
+msgid "Step"
+msgstr "Stap"
+
+#: includes/class-parameters-manager.php:191
+msgid "Default Text"
+msgstr "Standaardtekst"
+
+#: includes/class-parameters-manager.php:201
+msgid "Max Length"
+msgstr "Maximale lengte"
+
+#: includes/class-parameters-manager.php:229
+msgid "Dropdown Options"
+msgstr "Dropdown opties"
+
+#: includes/class-parameters-manager.php:231
+msgid "Enter options as value=label, one per line. Example: 0=Option One"
+msgstr "Voer opties in als waarde=label, één per regel. Voorbeeld: 0=Optie Een"
+
+#: includes/class-parameters-manager.php:356
+msgid "Select Available Colors"
+msgstr "Selecteer beschikbare kleuren"
+
+#: includes/class-parameters-manager.php:358
+msgid "Select All"
+msgstr "Selecteer alles"
+
+#: includes/class-parameters-manager.php:359
+msgid "Deselect All"
+msgstr "Deselecteer alles"
+
+#: includes/class-parameters-manager.php:374
+msgid "No global colors available. "
+msgstr "Geen globale kleuren beschikbaar. "
+
+#: includes/class-parameters-manager.php:375
+msgid "Add some colors first"
+msgstr "Voeg eerst wat kleuren toe"
+
+#: includes/class-parameters-manager.php:475
+msgid "Out of Stock"
+msgstr "Niet op voorraad"
+
+#: includes/class-parameters-manager.php:483
+msgid "Select which colors will be available for this parameter. Changes to global colors will automatically be reflected in products."
+msgstr "Selecteer welke kleuren beschikbaar zullen zijn voor deze parameter. Wijzigingen aan globale kleuren worden automatisch weergegeven in producten."
+
+#: includes/class-frontend-display.php:65
+msgid "Customize Your Product"
+msgstr "Pas uw product aan"
+
+#: includes/class-frontend-display.php:75
+msgid "Dimensions"
+msgstr "Afmetingen"
+
+#: includes/class-frontend-display.php:76
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+#: includes/class-frontend-display.php:77
+msgid "Text & Personalization"
+msgstr "Tekst & Personalisatie"
+
+#: includes/class-frontend-display.php:78
+msgid "Additional Options"
+msgstr "Extra opties"
+
+#: includes/class-frontend-display.php:432
+msgid "No options defined"
+msgstr "Geen opties gedefinieerd"
+
+#: includes/class-gltf-download-handler.php:56
+msgid "Downloading..."
+msgstr "Downloaden..."
+
+#: includes/class-gltf-download-handler.php:57
+msgid "Error downloading model"
+msgstr "Fout bij downloaden model"
+
+#: includes/class-gltf-download-handler.php:86
+msgid "Download GLTF"
+msgstr "Download GLTF"
+
+#: includes/class-gltf-download-handler.php:113
+msgid "Security check failed."
+msgstr "Beveiligingscontrole mislukt."
+
+#: includes/class-gltf-download-handler.php:123
+msgid "Scene name is required."
+msgstr "Scènenaam is vereist."
+
+#: includes/class-gltf-download-handler.php:172
+msgid "Model ready for download."
+msgstr "Model klaar voor download."
+
+#: includes/class-gltf-download-handler.php:192
+msgid "Order ID is required."
+msgstr "Order ID is vereist."
+
+#: includes/class-gltf-download-handler.php:202
+msgid "No 3D models found in this order."
+msgstr "Geen 3D-modellen gevonden in deze bestelling."
+
+#: includes/class-gltf-download-handler.php:210
+#: includes/class-gltf-download-handler.php:248
+msgid "Models ready for download."
+msgstr "Modellen klaar voor download."
+
+#: includes/class-gltf-download-handler.php:230
+msgid "Cart key is required."
+msgstr "Winkelwagen sleutel is vereist."
+
+#: includes/class-gltf-download-handler.php:240
+msgid "No 3D models found in this cart."
+msgstr "Geen 3D-modellen gevonden in deze winkelwagen."
+
+#: includes/class-gltf-download-handler.php:323
+msgid "Scene \"%s\" not found at path: %s"
+msgstr "Scène \"%s\" niet gevonden op pad: %s"
+
+#: includes/class-gltf-download-handler.php:397
+msgid "Failed to create GLTF file."
+msgstr "Aanmaken van GLTF-bestand mislukt."
+
+#: includes/class-gltf-download-handler.php:408
+msgid "GLTF file successfully generated."
+msgstr "GLTF-bestand succesvol gegenereerd."
+
+#: includes/class-gltf-download-handler.php:505
+msgid "ZIP functionality not available on this server."
+msgstr "ZIP-functionaliteit niet beschikbaar op deze server."
+
+#: includes/class-gltf-download-handler.php:539
+msgid "Failed to create ZIP file."
+msgstr "Aanmaken van ZIP-bestand mislukt."
+
+#: includes/class-gltf-download-handler.php:573
+msgid "Failed to generate any models for the ZIP file."
+msgstr "Genereren van modellen voor het ZIP-bestand mislukt."
+
+#: includes/class-gltf-download-handler.php:586
+msgid "%d models successfully added to ZIP file."
+msgstr "%d modellen succesvol toegevoegd aan ZIP-bestand."
+
+#: includes/class-filemanager.php:53
+msgid "Up to Parent Directory"
+msgstr "Naar bovenliggende map"
+
+#: includes/class-filemanager.php:58 includes/class-filemanager.php:172
+msgid "Upload Files"
+msgstr "Bestanden uploaden"
+
+#: includes/class-filemanager.php:62 includes/class-filemanager.php:192
+msgid "Create Directory"
+msgstr "Map aanmaken"
+
+#: includes/class-filemanager.php:70
+msgid "Name"
+msgstr "Naam"
+
+#: includes/class-filemanager.php:71
+msgid "Size"
+msgstr "Grootte"
+
+#: includes/class-filemanager.php:72
+msgid "Modified"
+msgstr "Gewijzigd"
+
+#: includes/class-filemanager.php:73 admin-colors.js:297
+msgid "Actions"
+msgstr "Acties"
+
+#: includes/class-filemanager.php:80
+msgid "No files or directories found."
+msgstr "Geen bestanden of mappen gevonden."
+
+#: includes/class-filemanager.php:184
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: includes/class-filemanager.php:185
+msgid "Upload"
+msgstr "Uploaden"
+
+#: includes/class-filemanager.php:198
+msgid "Directory Name:"
+msgstr "Mapnaam:"
+
+#: includes/class-filemanager.php:200
+msgid "Create"
+msgstr "Aanmaken"
+
+#: includes/class-filemanager.php:208
+msgid "Rename Item"
+msgstr "Item hernoemen"
+
+#: includes/class-filemanager.php:213
+msgid "New Name:"
+msgstr "Nieuwe naam:"
+
+#: includes/class-filemanager.php:215
+msgid "Rename"
+msgstr "Hernoemen"
+
+#: includes/class-filemanager.php:223
+msgid "Delete Item"
+msgstr "Item verwijderen"
+
+#: includes/class-filemanager.php:228
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: includes/class-filemanager.php:236
+msgid "File Preview"
+msgstr "Bestandsvoorbeeld"
+
+#: includes/class-filemanager.php:239
+msgid "Close"
+msgstr "Sluiten"
+
+#: class-colors-manager.php:110 class-colors-manager.php:196
+msgid "Permission denied"
+msgstr "Toegang geweigerd"
+
+#: class-colors-manager.php:130
+msgid "Color marked as in stock"
+msgstr "Kleur gemarkeerd als op voorraad"
+
+#: class-colors-manager.php:131
+msgid "Color marked as out of stock"
+msgstr "Kleur gemarkeerd als niet op voorraad"
+
+#: class-colors-manager.php:133 class-colors-manager.php:170
+#: class-colors-manager.php:219
+msgid "Color not found"
+msgstr "Kleur niet gevonden"
+
+#: class-colors-manager.php:147
+msgid "Color name is required"
+msgstr "Kleurnaam is verplicht"
+
+#: class-colors-manager.php:151
+msgid "Valid hex color code is required"
+msgstr "Geldige hex-kleurcode is vereist"
+
+#: class-colors-manager.php:168
+msgid "Color updated successfully"
+msgstr "Kleur succesvol bijgewerkt"
+
+#: class-colors-manager.php:178
+msgid "Color added successfully"
+msgstr "Kleur succesvol toegevoegd"
+
+#: class-colors-manager.php:208
+msgid "Color ID is required"
+msgstr "Kleur ID is vereist"
+
+#: class-colors-manager.php:217
+msgid "Color deleted successfully"
+msgstr "Kleur succesvol verwijderd"
+
+#: admin-colors.js:293
+msgid "Global Colors"
+msgstr "Globale kleuren"
+
+#: admin-colors.js:294
+msgid "Color Name"
+msgstr "Kleurnaam"
+
+#: admin-colors.js:295
+msgid "RGB Values"
+msgstr "RGB-waarden"
+
+#: admin-colors.js:296
+msgid "In Stock"
+msgstr "Op voorraad"
+
+#: admin-colors.js:298
+msgid "Add New Color"
+msgstr "Nieuwe kleur toevoegen"
+
+#: admin-colors.js:299
+msgid "Save Color"
+msgstr "Kleur opslaan"

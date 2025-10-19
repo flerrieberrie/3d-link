@@ -1,0 +1,267 @@
+/**
+ * Parameter Visibility System Styles
+ * 
+ * Styles for the dynamic parameter group visibility system
+ */
+
+/* Parameter States */
+.polygonjs-parameter {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.polygonjs-parameter.td-parameter-hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+.polygonjs-parameter.td-parameter-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Group Sections */
+.td-parameter-group-section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.td-parameter-group-section h4 {
+    margin: 0 0 15px 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+}
+
+.td-parameter-group-section.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+
+/* Parameter Group Indicators */
+.polygonjs-parameter[data-parameter-group] {
+    position: relative;
+}
+
+.polygonjs-parameter[data-parameter-group]::before {
+    content: attr(data-parameter-group);
+    position: absolute;
+    top: -8px;
+    right: 8px;
+    font-size: 10px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    opacity: 0.7;
+    font-weight: 500;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Admin Interface Styles */
+.td-parameter-visibility-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+    background: #f9f9f9;
+}
+
+.td-parameter-visibility-section label {
+    font-weight: 600;
+    color: #333;
+}
+
+.parameter-groups-assignment {
+    margin-top: 10px;
+}
+
+.parameter-group-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.parameter-group-checkbox:hover {
+    background: #f0f6ff;
+    border-color: #4a90e2;
+}
+
+.parameter-group-checkbox input[type="checkbox"] {
+    margin: 0 8px 0 0;
+}
+
+.parameter-group-checkbox input[type="checkbox"]:checked + strong {
+    color: #4a90e2;
+}
+
+/* Group Visibility Indicators */
+.td-group-indicator {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    font-size: 12px;
+    margin: 2px;
+    transition: all 0.2s ease;
+}
+
+.td-group-indicator.active {
+    background: #4a90e2;
+    color: white;
+}
+
+/* Animation for parameter visibility changes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.td-parameter-visible {
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+.td-parameter-hidden {
+    animation: fadeOutDown 0.3s ease forwards;
+}
+
+/* Customizer Group Styling */
+.td-unified-customizer .customizer-group {
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.td-unified-customizer .customizer-group.group-hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    margin-bottom: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.td-unified-customizer .customizer-group.group-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Parameter Control Styling */
+.polygonjs-parameter {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: white;
+}
+
+.polygonjs-parameter.td-parameter-hidden {
+    border-color: #f0f0f0;
+    background: #fafafa;
+}
+
+.polygonjs-parameter.td-parameter-visible {
+    border-color: #e0e0e0;
+    background: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .td-parameter-group-section {
+        margin: 15px 0;
+        padding: 12px;
+    }
+    
+    .polygonjs-parameter[data-parameter-group]::before {
+        display: none; /* Hide group labels on mobile */
+    }
+    
+    .parameter-group-checkbox {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+/* Debug Mode Styles */
+.td-debug-mode .polygonjs-parameter[data-parameter-group] {
+    border-left: 4px solid #4a90e2;
+}
+
+.td-debug-mode .polygonjs-parameter.td-parameter-hidden {
+    border-left-color: #ccc;
+}
+
+.td-debug-mode .polygonjs-parameter[data-parameter-group]::before {
+    opacity: 1;
+    background: #4a90e2;
+    color: white;
+}
+
+/* Loading States */
+.td-parameter-visibility-loading {
+    position: relative;
+}
+
+.td-parameter-visibility-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 100;
+}
+
+/* Error States */
+.td-parameter-visibility-error {
+    border: 1px solid #dc3545;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* Success States */
+.td-parameter-visibility-success {
+    border: 1px solid #28a745;
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}

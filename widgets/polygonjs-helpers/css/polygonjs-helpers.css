@@ -1,0 +1,180 @@
+/**
+ * TD Link Polygonjs Helpers - Bricks Element CSS
+ */
+
+/* Helper controls container */
+.td-helpers-container {
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Style variants */
+.td-helpers-container.style-card {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.td-helpers-container.style-bordered {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.td-helpers-container.style-minimal {
+    background: transparent;
+    padding: 0;
+}
+
+/* Header bar */
+.td-helpers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.style-minimal .td-helpers-header {
+    background-color: transparent;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.td-helpers-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.td-helpers-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: #666;
+}
+
+.td-helpers-toggle:hover {
+    color: #0073aa;
+}
+
+/* Controls container */
+.td-helpers-controls {
+    padding: 15px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.style-minimal .td-helpers-controls {
+    padding: 10px 0;
+}
+
+.td-helpers-controls.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}
+
+/* Control styles */
+.td-helpers-container .slider-control,
+.td-helpers-container .number-control,
+.td-helpers-container .text-control,
+.td-helpers-container .checkbox-control,
+.td-helpers-container .dropdown-control {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.td-helpers-container .slider-control:last-child,
+.td-helpers-container .number-control:last-child,
+.td-helpers-container .text-control:last-child,
+.td-helpers-container .checkbox-control:last-child,
+.td-helpers-container .dropdown-control:last-child {
+    margin-bottom: 0;
+}
+
+/* Labels */
+.td-helpers-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+
+.td-helpers-container .checkbox-control label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.td-helpers-container .checkbox-control input {
+    margin-right: 8px;
+}
+
+/* Inputs */
+.td-helpers-container input[type="range"] {
+    width: 100%;
+    margin: 0;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #e0e0e0;
+    -webkit-appearance: none;
+}
+
+.td-helpers-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2271b1;
+    cursor: pointer;
+}
+
+.td-helpers-container input[type="number"],
+.td-helpers-container input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.td-helpers-container select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 32px;
+    background-color: #fff;
+}
+
+/* Checkbox */
+.td-helpers-container input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive styling */
+@media (max-width: 767px) {
+    .td-helpers-container .slider-control,
+    .td-helpers-container .number-control,
+    .td-helpers-container .text-control,
+    .td-helpers-container .dropdown-control {
+        margin-bottom: 15px;
+    }
+    
+    .td-helpers-header h4 {
+        font-size: 13px;
+    }
+}

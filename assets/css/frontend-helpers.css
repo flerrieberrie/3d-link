@@ -1,0 +1,243 @@
+/**
+ * TD Link - Helpers CSS
+ * Styles for the helper controls section and input field alignment
+ */
+
+/* Ensure consistent alignment for input fields regardless of unit display */
+.number-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 150px; /* Ensure consistent width */
+}
+
+.slider-value-display {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 150px; /* Ensure consistent width */
+}
+
+/* Create a placeholder space when units are hidden */
+.measurement-unit[data-hide-unit="true"],
+.number-control[data-has-hidden-unit="true"] .measurement-unit,
+.slider-control[data-has-hidden-unit="true"] .measurement-unit {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    display: inline-flex !important; /* Keep the space but hide visually */
+    position: relative !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+
+/* Ensure forms align even when units are hidden */
+.visible-number-input,
+.slider-value-input {
+    min-width: 80px !important;
+    width: 80px !important;
+}
+
+/* Make sliders consistent in width and only respond to handle interactions */
+.slider-range-container {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.slider-track-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+}
+
+/* Style the visible slider */
+.visible-slider {
+    display: block;
+    flex: 1;
+    width: 100% !important;
+    height: 8px !important; /* Thicker slider track */
+    -webkit-appearance: none;
+    background: #e9e9e9 !important;
+    outline: none;
+    border-radius: 5px !important;
+    position: relative;
+    z-index: 1;
+    cursor: default !important; /* Prevent cursor change over the track */
+    pointer-events: none !important; /* Make the track non-interactive */
+    margin: 0 15px !important; /* Give space for min/max labels */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !important; /* Add a subtle inset shadow */
+}
+
+/* Style the slider handle - ONLY part that should be clickable */
+.visible-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px !important; /* Bigger handle dot */
+    height: 22px !important; /* Bigger handle dot */
+    border-radius: 50% !important;
+    background: #2271b1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* Make ONLY the handle interactive */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+    border: 2px solid white !important;
+    transition: transform 0.1s !important; /* Subtle transform on hover */
+}
+
+.visible-slider::-webkit-slider-thumb:hover,
+.visible-slider::-webkit-slider-thumb:active {
+    transform: scale(1.1) !important; /* Slightly bigger on hover/touch */
+}
+
+.visible-slider::-moz-range-thumb {
+    width: 22px !important; /* Bigger handle dot */
+    height: 22px !important; /* Bigger handle dot */
+    border-radius: 50% !important;
+    background: #2271b1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* Make ONLY the handle interactive */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
+    border: 2px solid white !important;
+    transition: transform 0.1s !important; /* Subtle transform on hover */
+}
+
+.visible-slider::-moz-range-thumb:hover,
+.visible-slider::-moz-range-thumb:active {
+    transform: scale(1.1) !important; /* Slightly bigger on hover/touch */
+}
+
+/* Make sure slider track stays proper width regardless of inputs/units */
+.slider-control {
+    margin-bottom: 20px;
+}
+
+.slider-range-container {
+    width: 100%;
+}
+
+/* Style the min/max value labels */
+.slider-min-value, 
+.slider-max-value {
+    flex: 0 0 auto;
+    width: 40px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Number range info style for consistency */
+.number-range-info {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Main helper controls container */
+.td-helper-controls {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Helper section title */
+.td-helper-controls h3 {
+    margin-top: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Helper description text */
+.td-helper-controls .helper-description {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* Control styling within the helper section */
+.td-helper-controls .slider-control,
+.td-helper-controls .number-control,
+.td-helper-controls .text-control,
+.td-helper-controls .checkbox-control,
+.td-helper-controls .color-control,
+.td-helper-controls .dropdown-control {
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+}
+
+/* Slightly different styling for different control types */
+.td-helper-controls .checkbox-control {
+    display: flex;
+    align-items: center;
+}
+
+.td-helper-controls .checkbox-control input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Hover effects for interactive elements */
+.td-helper-controls .slider-control:hover,
+.td-helper-controls .number-control:hover,
+.td-helper-controls .text-control:hover,
+.td-helper-controls .checkbox-control:hover,
+.td-helper-controls .dropdown-control:hover {
+    border-color: #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Helper toggle button - to show/hide all helpers */
+.td-helper-toggle {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    padding: 6px 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.td-helper-toggle:hover {
+    background-color: #eee;
+}
+
+/* When helpers are hidden */
+.td-helper-controls.helpers-hidden {
+    max-height: 50px;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.td-helper-controls.helpers-hidden .helper-content {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .td-helper-controls {
+        padding: 10px;
+    }
+    
+    .td-helper-controls h3 {
+        font-size: 1.1rem;
+    }
+}
