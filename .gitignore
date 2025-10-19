@@ -5,6 +5,7 @@ Thumbs.db
 # IDE Files
 .vscode/
 .idea/
+.claude/
 *.sublime-project
 *.sublime-workspace
 
