@@ -2,10 +2,13 @@
 /**
  * Plugin Name: 3D Link
  * Description: Adds custom product customization for 3D products with WooCommerce and PolygonJS integration
- * Version: 2.3.0
+ * Version: 0.5
  * Author: TD Link
  * Text Domain: td-link
  * Domain Path: /languages
+ * 
+ * GitHub Plugin URI: flerrieberrie/3d-link
+ * Primary Branch: main
  */
 
 if (!defined('ABSPATH')) {

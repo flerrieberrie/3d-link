@@ -1,4 +1,4 @@
-# TD Link v2.3.0
+# TD Link v0.5
 
 A WordPress plugin that integrates PolygonJS 3D scenes with WooCommerce for creating customizable 3D product displays with dynamic pricing.
 
