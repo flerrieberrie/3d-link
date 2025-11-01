@@ -136,17 +136,25 @@ class TD_Models_Manager {
         
         $dist_path = get_post_meta($product_id, '_td_dist_path', true) ?: '3d/dist';
         
-        // Create a unique filename for tracking (no actual file generation)
+        // Create a unique filename for the model
         $user_id = get_current_user_id();
         $unique_id = uniqid();
         $sanitized_scene = sanitize_file_name($scene_name);
         $filename = "{$sanitized_scene}_{$user_id}_{$unique_id}.glb";
         $file_path = trailingslashit($this->models_dir) . $filename;
         
-        // Store parameters for later use
+        // Generate the GLB file
+        $gltf_handler = new TD_GLTF_Download_Handler();
         $parameters = $cart_item_data['td_parameters'];
         
-        // Get file URL (virtual path for tracking purposes)
+        $result = $gltf_handler->generate_glb($scene_name, $parameters, $dist_path, $file_path);
+        
+        if (!$result['success']) {
+            error_log("Failed to save model to file: " . $result['message']);
+            return;
+        }
+        
+        // Get file URL
         $upload_dir = wp_upload_dir();
         $file_url = str_replace($upload_dir['basedir'], $upload_dir['baseurl'], $file_path);
         

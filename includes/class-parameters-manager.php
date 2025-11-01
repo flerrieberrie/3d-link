@@ -24,11 +24,8 @@ class TD_Parameters_Manager {
         add_action('woocommerce_product_options_general_product_data', [$this, 'add_parameter_fields']);
         add_action('woocommerce_process_product_meta', [$this, 'save_parameter_fields']);
         
-        // Add AJAX handlers for auto-population (admin only)
+        // Add AJAX handlers for auto-population
         add_action('wp_ajax_td_auto_populate_parameter', [$this, 'ajax_auto_populate_parameter']);
-        
-        // Show debug info after save
-        add_action('admin_notices', [$this, 'show_parameter_debug']);
 
         // Get the sections manager instance
         global $td_link;
@@ -89,7 +86,6 @@ class TD_Parameters_Manager {
             'step' => '1',
             'max_length' => '20',
             'hide_unit' => false,
-            'group_id' => '',
         ], true);
         $template = ob_get_clean();
         
@@ -162,7 +158,6 @@ class TD_Parameters_Manager {
         echo '<div class="parameter-actions">';
         echo '<button type="button" class="button move-up" title="' . esc_attr__('Move Up', 'td-link') . '"><span class="dashicons dashicons-arrow-up-alt2"></span></button>';
         echo '<button type="button" class="button move-down" title="' . esc_attr__('Move Down', 'td-link') . '"><span class="dashicons dashicons-arrow-down-alt2"></span></button>';
-        echo '<button type="button" class="button duplicate-parameter" title="' . esc_attr__('Duplicate', 'td-link') . '"><span class="dashicons dashicons-admin-page"></span></button>';
         echo '<button type="button" class="button remove-parameter" title="' . esc_attr__('Remove', 'td-link') . '"><span class="dashicons dashicons-trash"></span></button>';
         echo '</div>';
         echo '</div>';
@@ -180,14 +175,6 @@ class TD_Parameters_Manager {
 
         // Helper parameter flag (hidden field - selected via section dropdown)
         echo '<input type="hidden" name="_poly_params[' . $index . '][is_helper]" value="' . ($is_helper ? 'yes' : 'no') . '" class="parameter-is-helper">';
-        
-        // Group assignment field (V3 - using group_name instead of group_id)
-        $group_name = isset($parameter['group_name']) ? $parameter['group_name'] : '';
-        echo '<input type="hidden" name="_poly_params[' . $index . '][group_name]" value="' . esc_attr($group_name) . '" class="parameter-group-name">';
-        
-        // Legacy group_id field for backward compatibility
-        $group_id = isset($parameter['group_id']) ? $parameter['group_id'] : '';
-        echo '<input type="hidden" name="_poly_params[' . $index . '][group_id]" value="' . esc_attr($group_id) . '" class="parameter-group-id">';
         
         // Parameter section dropdown using WooCommerce field styling
         woocommerce_wp_select([
@@ -854,18 +841,16 @@ class TD_Parameters_Manager {
             
             foreach ($_POST['_poly_params'] as $param) {
                 // Use universal parser to auto-populate missing fields
-                $auto_populated = TD_Universal_Parameter_Parser::auto_populate_parameter($param, $param['html_snippet'] ?? '');
+                $parameter = TD_Universal_Parameter_Parser::auto_populate_parameter($param, $param['html_snippet'] ?? '');
                 
-                // Basic sanitization - preserve all fields from auto_populated
+                // Basic sanitization
                 $parameter = [
-                    'html_snippet' => isset($auto_populated['html_snippet']) ? $auto_populated['html_snippet'] : '',
-                    'display_name' => sanitize_text_field($auto_populated['display_name'] ?? ''),
-                    'control_type' => sanitize_text_field($auto_populated['control_type'] ?? 'number'),
-                    'node_id' => sanitize_text_field($auto_populated['node_id'] ?? ''),
-                    'default_value' => isset($auto_populated['default_value']) ? $auto_populated['default_value'] : '',
-                    'section' => sanitize_text_field($auto_populated['section'] ?? ''),
-                    'group_id' => isset($param['group_id']) ? sanitize_text_field($param['group_id']) : '',
-                    'group_name' => isset($param['group_name']) ? sanitize_text_field($param['group_name']) : '',
+                    'html_snippet' => isset($parameter['html_snippet']) ? $parameter['html_snippet'] : '',
+                    'display_name' => sanitize_text_field($parameter['display_name'] ?? ''),
+                    'control_type' => sanitize_text_field($parameter['control_type'] ?? 'number'),
+                    'node_id' => sanitize_text_field($parameter['node_id'] ?? ''),
+                    'default_value' => isset($parameter['default_value']) ? $parameter['default_value'] : '',
+                    'section' => sanitize_text_field($parameter['section'] ?? ''),
                 ];
                 
                 // RGB component info
@@ -922,16 +907,6 @@ class TD_Parameters_Manager {
                 }
                 
                 $parameters[] = $parameter;
-            }
-            
-            // Temporary debug: Log to JavaScript console via admin notice
-            $debug_info = [];
-            foreach ($parameters as $idx => $param) {
-                $debug_info[] = "Param {$idx} ({$param['display_name']}): group_id = " . ($param['group_id'] ?? 'none');
-            }
-            
-            if (!empty($debug_info)) {
-                set_transient('td_parameter_debug_' . get_current_user_id(), implode('<br>', $debug_info), 30);
             }
             
             update_post_meta($post_id, '_poly_parameters', $parameters);
@@ -1036,19 +1011,6 @@ class TD_Parameters_Manager {
             wp_send_json_success($parsed);
         } else {
             wp_send_json_error('Could not parse HTML snippet');
-        }
-    }
-    
-    /**
-     * Show parameter debug info after save
-     */
-    public function show_parameter_debug() {
-        $debug_info = get_transient('td_parameter_debug_' . get_current_user_id());
-        if ($debug_info) {
-            echo '<div class="notice notice-info is-dismissible">';
-            echo '<p><strong>Parameter Save Debug:</strong><br>' . $debug_info . '</p>';
-            echo '</div>';
-            delete_transient('td_parameter_debug_' . get_current_user_id());
         }
     }
 }

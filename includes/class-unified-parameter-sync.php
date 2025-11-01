@@ -210,10 +210,9 @@ class TD_Unified_Parameter_Sync {
      * Initialize hooks
      */
     public static function init() {
-        // Clean system - only add frontend footer script
-        if (!is_admin()) {
-            add_action('wp_footer', [__CLASS__, 'inject_capture_script']);
-        }
+        add_action('wp_ajax_td_store_unified_state', [__CLASS__, 'ajax_store_unified_state']);
+        add_action('wp_ajax_nopriv_td_store_unified_state', [__CLASS__, 'ajax_store_unified_state']);
+        add_action('wp_footer', [__CLASS__, 'inject_capture_script']);
     }
     
     /**

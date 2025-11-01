@@ -2,57 +2,6 @@
  * 3D-Link Admin Styles
  */
 
-/* Attribute Display Type Field */
-.woocommerce_attribute .attribute_display_type_row {
-    margin-top: 10px;
-}
-
-.woocommerce_attribute .attribute_display_type_row label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.woocommerce_attribute .attribute_display_type_row select {
-    width: 100%;
-    max-width: 300px;
-}
-
-.woocommerce_attribute .attribute_display_type_row .description {
-    font-style: italic;
-    color: #666;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-/* Parameter Groups Styling Overrides */
-.parameter-groups-container .toggle-group,
-.parameter-groups-container .duplicate-group,
-.parameter-groups-container .remove-group,
-.parameter-group-header .toggle-group,
-.parameter-group-header .duplicate-group,
-.parameter-group-header .remove-group {
-    text-decoration: none !important;
-    border: none !important;
-    background: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    padding: 0 !important;
-}
-
-.parameter-groups-container .toggle-group:hover,
-.parameter-groups-container .duplicate-group:hover,
-.parameter-groups-container .remove-group:hover,
-.parameter-groups-container .toggle-group:focus,
-.parameter-groups-container .duplicate-group:focus,
-.parameter-groups-container .remove-group:focus {
-    text-decoration: none !important;
-    border: none !important;
-    background: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
 /* Parameter Cards */
 .polygonjs-parameters {
     padding: 10px;
@@ -116,35 +65,11 @@
     border: 1px solid #ddd !important;
     cursor: pointer;
     transition: all 0.2s ease;
-    text-decoration: none !important;
-    box-shadow: none !important;
 }
 
-.parameter-actions button:hover,
-.parameter-actions button:focus {
+.parameter-actions button:hover {
     background: #e0e0e0 !important;
     color: #333 !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-.parameter-actions button.duplicate-parameter {
-    color: #0073aa !important;
-}
-
-.parameter-actions button.duplicate-parameter:hover {
-    color: #005a87 !important;
-    background: #e6f3ff !important;
-}
-
-.parameter-actions button.remove-parameter {
-    color: #a00 !important;
-}
-
-.parameter-actions button.remove-parameter:hover {
-    color: #dc3232 !important;
-    background: #ffe6e6 !important;
 }
 
 .parameter-actions button .dashicons {

@@ -161,24 +161,6 @@
             }
         });
         
-        // Duplicate parameter button
-        $(document).on('click', '.duplicate-parameter', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const $originalParam = $(this).closest('.polygonjs-parameter');
-            const rgbGroup = $originalParam.data('rgb-group');
-            const isRgbComponent = $originalParam.data('rgb-component');
-            
-            if (isRgbComponent && rgbGroup) {
-                // Handle RGB group duplication
-                duplicateRgbGroup($originalParam, rgbGroup);
-            } else {
-                // Handle single parameter duplication
-                window.duplicateSingleParameter($originalParam);
-            }
-        });
-        
         // Toggle control settings based on control type
         $(document).on('change', '.control-type-field', function() {
             const controlType = $(this).val();
@@ -457,16 +439,6 @@
      * Update indices when parameters are reordered
      */
     function updateIndices() {
-        // Store current group assignments before updating indices
-        const groupAssignments = {};
-        $('.polygonjs-parameter').each(function(index) {
-            const $param = $(this);
-            const $groupField = $param.find('.parameter-group-id');
-            if ($groupField.length) {
-                groupAssignments[index] = $groupField.val();
-            }
-        });
-        
         $('.polygonjs-parameter').each(function(index) {
             $(this).attr('data-index', index);
             
@@ -483,11 +455,6 @@
                     $(this).attr('id', id.replace(/_poly_params_\d+_/, '_poly_params_' + index + '_'));
                 }
             });
-            
-            // Restore group assignment
-            if (groupAssignments[index] !== undefined) {
-                $(this).find('.parameter-group-id').val(groupAssignments[index]);
-            }
             
             // Update parameter title
             updateParameterHeader($(this));
@@ -815,154 +782,6 @@
                 .attr('data-color', color.name);
             
             previewContainer.append(swatch);
-        });
-    }
-    
-    /**
-     * Duplicate a single parameter
-     */
-    window.duplicateSingleParameter = function($originalParam) {
-        // Store the original group ID before cloning
-        const originalGroupId = $originalParam.find('.parameter-group-id').val() || '';
-        
-        const $clone = $originalParam.clone(true, true);
-        
-        // Clear unique identifiers and increment counters
-        const newIndex = $('.polygonjs-parameter').length;
-        updateParameterIndexes($clone, newIndex);
-        
-        // Restore the group ID after index updates
-        $clone.find('.parameter-group-id').val(originalGroupId);
-        if (originalGroupId) {
-            $clone.attr('data-group-id', originalGroupId);
-        }
-        
-        // Update display name to indicate it's a copy
-        const $displayNameField = $clone.find('.display-name-field');
-        const originalName = $displayNameField.val();
-        if (originalName) {
-            $displayNameField.val(originalName + ' (Copy)');
-        }
-        
-        // Clear node ID to force manual entry
-        $clone.find('.node-id-field').val('');
-        
-        // Insert after the original parameter
-        $originalParam.after($clone);
-        
-        // Show and expand the cloned parameter
-        $clone.show().removeClass('collapsed');
-        updateToggleIcon($clone);
-        
-        // Update parameter header
-        updateParameterHeader($clone);
-        
-        // Focus on the HTML snippet field
-        $clone.find('.html-snippet-field').focus();
-        
-        // Reinitialize tooltips and update indexes
-        reinitializeTooltips();
-        updateIndices();
-        
-        // Trigger parameter-added event for groups system
-        $(document).trigger('parameter-added');
-        
-        return $clone;
-    }
-    
-    /**
-     * Duplicate an entire RGB group
-     */
-    function duplicateRgbGroup($originalParam, rgbGroup) {
-        // Find all parameters in the RGB group
-        const $rgbComponents = $('.polygonjs-parameter[data-rgb-group="' + rgbGroup + '"]');
-        
-        // Generate new RGB group ID
-        const newRgbGroupId = 'rgb-' + Date.now();
-        
-        // Clone each component
-        const $clonedComponents = [];
-        $rgbComponents.each(function(index) {
-            const $clone = $(this).clone(true, true);
-            const newIndex = $('.polygonjs-parameter').length + index;
-            
-            // Update indexes
-            updateParameterIndexes($clone, newIndex);
-            
-            // Update RGB group ID
-            $clone.attr('data-rgb-group', newRgbGroupId);
-            $clone.find('input[name$="[rgb_group]"]').val(newRgbGroupId);
-            
-            // Update display name for the main component (red)
-            if (index === 0) {
-                const $displayNameField = $clone.find('.display-name-field');
-                const originalName = $displayNameField.val();
-                if (originalName) {
-                    $displayNameField.val(originalName + ' (Copy)');
-                }
-            }
-            
-            // Clear node IDs to force manual entry
-            $clone.find('.node-id-field').val('');
-            
-            $clonedComponents.push($clone);
-        });
-        
-        // Insert all cloned components after the last original component
-        const $lastComponent = $rgbComponents.last();
-        $clonedComponents.forEach($clone => {
-            $lastComponent.after($clone);
-        });
-        
-        // Show and expand the main (red) component
-        if ($clonedComponents.length > 0) {
-            $clonedComponents[0].show().removeClass('collapsed');
-            updateToggleIcon($clonedComponents[0]);
-            updateParameterHeader($clonedComponents[0]);
-            
-            // Focus on the HTML snippet field of the main component
-            $clonedComponents[0].find('.html-snippet-field').focus();
-        }
-        
-        // Reinitialize tooltips and update indexes
-        reinitializeTooltips();
-        updateIndices();
-        
-        // Trigger parameter-added event for groups system
-        $(document).trigger('parameter-added');
-    }
-    
-    /**
-     * Update parameter indexes and form field names
-     */
-    function updateParameterIndexes($param, newIndex) {
-        // Update data-index attribute
-        $param.attr('data-index', newIndex);
-        
-        // Update all form field names and IDs
-        $param.find('input, select, textarea').each(function() {
-            const $field = $(this);
-            
-            // Update name attribute
-            const name = $field.attr('name');
-            if (name) {
-                $field.attr('name', name.replace(/\[(\d+)\]/, '[' + newIndex + ']'));
-            }
-            
-            // Update ID attribute
-            const id = $field.attr('id');
-            if (id) {
-                $field.attr('id', id.replace(/(_|-)(\d+)(_|-)/g, '$1' + newIndex + '$3'));
-            }
-        });
-        
-        // Update labels
-        $param.find('label').each(function() {
-            const $label = $(this);
-            const forAttr = $label.attr('for');
-            if (forAttr) {
-                $label.attr('for', forAttr.replace(/(_|-)(\d+)(_|-)/g, '$1' + newIndex + '$3'));
-            }
         });
     }
 })(jQuery);

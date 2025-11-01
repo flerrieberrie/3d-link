@@ -32,12 +32,10 @@ class TD_Link {
      */
     public $parameters_manager;
     public $sections_manager;
-    public $parameter_groups_manager;
     public $frontend_display;
     public $cart_handler;
     public $colors_manager;
     public $models_manager;
-    public $parameter_visibility_manager;
     
     /**
      * Get the singleton instance
@@ -63,7 +61,6 @@ class TD_Link {
         // Load required files
         $this->load_dependencies();
         
-        
         // Initialize components
         add_action('plugins_loaded', [$this, 'init'], 20);
     }
@@ -88,16 +85,15 @@ class TD_Link {
         require_once TD_LINK_PATH . 'includes/class-universal-frontend-handler.php';
         require_once TD_LINK_PATH . 'includes/class-parameters-manager.php';
         require_once TD_LINK_PATH . 'includes/class-sections-manager.php';
-        require_once TD_LINK_PATH . 'includes/class-parameter-groups-manager.php';
         require_once TD_LINK_PATH . 'includes/class-frontend-display.php';
         require_once TD_LINK_PATH . 'includes/class-frontend-cart.php';
         require_once TD_LINK_PATH . 'includes/class-assets-manager.php';
         require_once TD_LINK_PATH . 'includes/class-colors-manager.php';
+        require_once TD_LINK_PATH . 'includes/class-glb-download-handler.php';
         require_once TD_LINK_PATH . 'includes/class-models-manager.php';
         require_once TD_LINK_PATH . 'includes/class-debug-helper.php';
         require_once TD_LINK_PATH . 'includes/class-color-sync.php';
         require_once TD_LINK_PATH . 'includes/class-parameter-sync.php';
-        require_once TD_LINK_PATH . 'includes/class-parameter-visibility-manager.php';
         require_once TD_LINK_PATH . 'includes/class-unified-parameter-sync.php';
         
         // Dashboard widgets and admin interfaces
@@ -118,13 +114,12 @@ class TD_Link {
         // Initialize components
         $this->parameters_manager = new TD_Parameters_Manager();
         $this->sections_manager = new TD_Sections_Manager();
-        $this->parameter_groups_manager = new TD_Parameter_Groups_Manager();
         $this->frontend_display = new TD_Frontend_Display();
         $this->cart_handler = new TD_Frontend_Cart();
         $this->colors_manager = new TD_Colors_Manager();
         $this->models_manager = new TD_Models_Manager();
-        $this->parameter_visibility_manager = new TD_Parameter_Visibility_Manager();
         $assets_manager = new TD_Assets_Manager();
+        $glb_download_handler = new TD_GLTF_Download_Handler();
         
         // Initialize assets manager
         $assets_manager->init();

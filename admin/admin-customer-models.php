@@ -445,6 +445,13 @@ if (isset($_GET['deleted']) && $_GET['deleted'] == 1) {
                                     </td>
                                     <td>
                                         <div class="td-actions">
+                                            <?php if ($file_exists) : ?>
+                                                <a href="<?php echo esc_url($model->file_url); ?>" class="button button-secondary" target="_blank">
+                                                    <span class="dashicons dashicons-download"></span> <?php _e('Download', 'td-link'); ?>
+                                                </a>
+                                            <?php else : ?>
+                                                <span class="td-file-missing"><?php _e('File missing', 'td-link'); ?></span>
+                                            <?php endif; ?>
                                             
                                             <?php if ($model->parameters) : ?>
                                                 <a href="<?php echo esc_url(admin_url('admin.php?page=td-model-viewer&model_id=' . $model->id . '&order_id=' . $model->order_id)); ?>" class="button button-primary" target="_blank">

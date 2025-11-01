@@ -2,83 +2,21 @@
  * 3D-Link Customizer Styles
  */
 
-/* Unified Customizer Container */
-.td-unified-customizer {
-    margin: 30px 0;
-    padding: 25px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-
-/* Product Variations Section */
-.td-product-variations-section {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 2px solid #eee;
-}
-
-.td-product-variations-section h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-/* Make WooCommerce variations look more integrated */
-.td-product-variations-section .variations {
-    margin: 0;
-}
-
-.td-product-variations-section .variations td.label {
-    width: 30%;
-    padding: 12px 15px 12px 0;
-    font-weight: 500;
-    color: #555;
-}
-
-.td-product-variations-section .variations td.value {
-    padding: 12px 0;
-}
-
-.td-product-variations-section .variations select {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    border: 2px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
-    background-color: #fff;
-    transition: all 0.3s ease;
-}
-
-.td-product-variations-section .variations select:focus {
-    border-color: #4a90e2;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
-}
-
-/* Style the variation wrapper to match our custom styles */
-.td-product-variations-section .td-variation-wrapper {
-    margin-bottom: 20px;
-}
-
 .td-product-customizer {
-    padding: 0;
-    background: transparent;
-    border-radius: 0;
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 .td-product-customizer h3 {
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #333;
+    border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
 }
 
@@ -109,44 +47,13 @@
     border: none;
 }
 
-/* Unified styling for variation options and parameter groups */
-.td-unified-customizer .single_variation_wrap {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #e0e0e0;
-}
-
-/* Match button styles across variations and parameters */
-.td-unified-customizer button,
-.td-unified-customizer .button,
-.td-unified-customizer .single_add_to_cart_button {
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-/* Parameter group headers to match variation section */
-.td-product-customizer .customizer-group h4 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-
 /* Customizer groups */
 .customizer-group {
-    margin-bottom: 25px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.customizer-group:hover {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .customizer-group h4 {
@@ -698,54 +605,5 @@ input[type="range"]::-moz-range-thumb:hover {
         content: "";
         display: table;
         clear: both;
-    }
-}
-
-/* Parameter Groups for Variation-based Display */
-.parameter-group {
-    margin-bottom: 25px;
-    padding: 20px;
-    background: #ffffff;
-    border: 1px solid #e5e5e5;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.parameter-group.td-hidden {
-    display: none !important;
-}
-
-.parameter-group h4 {
-    margin: 0 0 15px 0;
-    padding: 0 0 10px 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c3e50;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.parameter-group.ungrouped-parameters {
-    background: #f8f9fa;
-    border-color: #dee2e6;
-}
-
-.parameter-group.ungrouped-parameters h4 {
-    color: #495057;
-}
-
-/* Animation for parameter group show/hide */
-.parameter-group {
-    animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

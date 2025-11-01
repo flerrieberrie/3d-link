@@ -390,7 +390,10 @@
                 if (event.data && event.data.type === 'modelReady') {
                     console.log('[TD Customizer] Received modelReady message, attempting to apply defaults');
                     
-                    // No need to request the scene - it will be available when ready
+                    // Send a message back to request the scene
+                    if (event.source) {
+                        event.source.postMessage({ type: 'requestScene' }, '*');
+                    }
                 }
                 
                 // Handle sceneInfo response

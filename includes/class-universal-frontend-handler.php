@@ -27,14 +27,13 @@ class TD_Universal_Frontend_Handler {
         ob_start();
         ?>
         <script>
-        // Universal Parameter Handler - Auto-generated
+        // Universal Parameter Handler - Auto-generated for Product <?php echo $product_id; ?>
         (function() {
-            const productId = <?php echo json_encode((string)$product_id); ?>;
-            const productMapping = <?php echo json_encode($mapping); ?>;
+            const productMapping = <?php echo json_encode($mapping, JSON_PRETTY_PRINT); ?>;
             
             // Store the mapping globally for debugging and frontend use
-            window['tdUniversalMapping_' + productId] = productMapping;
-            window.tdUniversalMapping = productMapping;
+            window.tdUniversalMapping_<?php echo $product_id; ?> = productMapping;
+            window.tdUniversalMapping = productMapping; // Also store without product ID for easier access
             
             // Make RGB groups available globally for frontend customizer
             if (productMapping.rgb_groups) {
@@ -46,7 +45,7 @@ class TD_Universal_Frontend_Handler {
              * Initialize universal parameter controls
              */
             function initUniversalControls() {
-                console.log('[Universal Controls] Initializing for product', productId);
+                console.log('[Universal Controls] Initializing for product <?php echo $product_id; ?>');
                 console.log('[Universal Controls] Mapping data:', productMapping);
                 
                 // Wait for PolygonJS scene to be ready

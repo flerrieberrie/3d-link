@@ -160,6 +160,10 @@
     color: #c62828;
 }
 
+.td-file-missing {
+    color: #c62828;
+    font-style: italic;
+}
 
 /* Actions */
 .td-actions {

@@ -507,25 +507,12 @@ class TD_Assets_Manager {
             wp_register_script(
                 'td-admin-script', 
                 TD_LINK_URL . 'assets/js/admin-core.js', 
-                ['jquery', 'jquery-ui-sortable'], 
+                ['jquery'], 
                 filemtime(TD_LINK_PATH . 'assets/js/admin-core.js'), 
                 true
             );
             
             wp_enqueue_script('td-admin-script');
-            
-            // Register and enqueue parameter groups script
-            wp_register_script(
-                'td-admin-parameter-groups', 
-                TD_LINK_URL . 'assets/js/admin-parameter-groups.js', 
-                ['jquery', 'jquery-ui-sortable', 'td-admin-script'], 
-                filemtime(TD_LINK_PATH . 'assets/js/admin-parameter-groups.js'), 
-                true
-            );
-            
-            wp_enqueue_script('td-admin-parameter-groups');
-            
-            // No localization needed - simple system with no AJAX
         }
     }
 }

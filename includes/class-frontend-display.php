@@ -13,11 +13,7 @@ class TD_Frontend_Display {
      * Initialize the class
      */
     public function __construct() {
-        // Clean system - no need to interfere with WooCommerce variation forms
-        
-        // Add our unified customizer interface
-        add_action('woocommerce_before_add_to_cart_button', [$this, 'display_unified_customizer'], 5);
-        
+        add_action('woocommerce_before_add_to_cart_button', [$this, 'display_parameters']);
         add_action('wp_head', [$this, 'inject_admin_preview_script']);
         add_action('wp_footer', [$this, 'add_debug_info']);
         
@@ -32,7 +28,6 @@ class TD_Frontend_Display {
             add_option('td_measurement_unit', 'cm');
         }
     }
-    
     
     /**
      * Add debug information to the footer
@@ -88,29 +83,6 @@ class TD_Frontend_Display {
     }
     
     /**
-     * Display unified customizer interface
-     */
-    public function display_unified_customizer() {
-        global $product;
-        if (!$product || !is_a($product, 'WC_Product')) {
-            $product = wc_get_product(get_the_ID());
-        }
-        if (!$product) return;
-        
-        // Only proceed if PolygonJS is enabled for this product
-        if (get_post_meta($product->get_id(), '_enable_polygonjs', true) !== 'yes') return;
-        
-        // Start unified customizer wrapper
-        echo '<div class="td-unified-customizer">';
-        
-        
-        // Display parameters
-        $this->display_parameters();
-        
-        echo '</div>'; // End unified customizer
-    }
-    
-    /**
      * Display parameters as UI controls
      */
     public function display_parameters() {
@@ -129,13 +101,6 @@ class TD_Frontend_Display {
         if (!isset($parameters)) {
             $parameters_manager = new TD_Parameters_Manager();
             $parameters = $parameters_manager->get_parameters($product_id);
-        }
-        
-        // Add index to each parameter
-        if (is_array($parameters)) {
-            foreach ($parameters as $index => &$param) {
-                $param['index'] = $index;
-            }
         }
         
         // Collect all parameters with hidden units
@@ -218,7 +183,7 @@ class TD_Frontend_Display {
 
         // Start output - Main product parameters
         echo '<div class="td-product-customizer" data-product-id="' . esc_attr($product_id) . '">';
-        echo '<h3>' . esc_html__('Customization Options', 'td-link') . '</h3>';
+        echo '<h3>' . esc_html__('Customize Your Product', 'td-link') . '</h3>';
 
         // Get sections manager
         global $td_link;
@@ -281,9 +246,8 @@ class TD_Frontend_Display {
             $grouped_params[$section_id][] = $param;
         }
 
-        
-        // LEGACY: Still display section-based groups for backwards compatibility
-        // Display each section group if it has parameters
+        // Display each group if it has parameters
+        // Use section names from the sections manager
         $group_titles = [];
         foreach ($sections as $section_id => $section) {
             $group_titles[$section_id] = $section['name'];
@@ -319,21 +283,6 @@ class TD_Frontend_Display {
                         $rgb_attrs .= ' data-rgb-b="' . esc_attr($b_component['node_id']) . '"';
                     }
                 }
-                
-                // Add parameter wrapper with visibility attributes
-                $param_classes = 'polygonjs-parameter';
-                
-                // Add group visibility attributes
-                $group_attributes = '';
-                $group_name = isset($param['group_name']) ? trim($param['group_name']) : '';
-                if (!empty($group_name)) {
-                    $group_attributes .= ' data-parameter-group="' . esc_attr($group_name) . '"';
-                    $group_attributes .= ' data-has-group="true"';
-                } else {
-                    $group_attributes .= ' data-has-group="false"';
-                }
-                
-                echo '<div class="' . esc_attr($param_classes) . '" data-index="' . esc_attr($param['index'] ?? '') . '"' . $group_attributes . '>';
 
                 // Render the appropriate control based on type
                 switch ($param['control_type']) {
@@ -361,8 +310,6 @@ class TD_Frontend_Display {
                         $this->render_dropdown($node_id, $display_name, $param, $rgb_attrs);
                         break;
                 }
-                
-                echo '</div>'; // End polygonjs-parameter
             }
 
             echo '</div>'; // End customizer-group
@@ -376,79 +323,6 @@ class TD_Frontend_Display {
         // Store helper params globally so they can be accessed by the Bricks element if needed
         global $td_link_helper_params;
         $td_link_helper_params = $helper_params;
-    }
-    
-    /**
-     * Render a single parameter
-     */
-    private function render_parameter($param, $rgb_groups) {
-        if (empty($param['node_id']) || empty($param['control_type'])) return;
-        
-        // Skip hidden components of RGB groups (only show the main R component)
-        if (!empty($param['is_rgb_component']) && $param['is_rgb_component'] !== 'r') {
-            return;
-        }
-        
-        // Skip hidden controls
-        if ($param['control_type'] === 'hidden') {
-            return;
-        }
-        
-        $node_id = $param['node_id'];
-        $display_name = !empty($param['display_name']) ? $param['display_name'] : $node_id;
-        
-        // Check if this is part of an RGB group
-        $rgb_group = !empty($param['rgb_group']) ? $param['rgb_group'] : '';
-        $is_rgb_component = !empty($param['is_rgb_component']) ? $param['is_rgb_component'] : '';
-        
-        // Add special RGB group attributes if needed
-        $rgb_attrs = '';
-        if ($rgb_group && $is_rgb_component === 'r') {
-            $rgb_attrs = ' data-rgb-group="' . esc_attr($rgb_group) . '"';
-            
-            // Find G and B components
-            $g_component = $rgb_groups[$rgb_group]['g'] ?? null;
-            $b_component = $rgb_groups[$rgb_group]['b'] ?? null;
-            
-            if ($g_component && $b_component) {
-                $rgb_attrs .= ' data-rgb-g="' . esc_attr($g_component['node_id']) . '"';
-                $rgb_attrs .= ' data-rgb-b="' . esc_attr($b_component['node_id']) . '"';
-            }
-        }
-        
-        // Add parameter wrapper
-        $param_classes = 'polygonjs-parameter';
-        
-        echo '<div class="' . esc_attr($param_classes) . '" data-index="' . esc_attr($param['index'] ?? '') . '">';
-        
-        // Render the appropriate control based on type
-        switch ($param['control_type']) {
-            case 'slider':
-                $this->render_slider($node_id, $display_name, $param, $rgb_attrs);
-                break;
-            
-            case 'number':
-                $this->render_number_input($node_id, $display_name, $param, $rgb_attrs);
-                break;
-            
-            case 'text':
-                $this->render_text_input($node_id, $display_name, $param, $rgb_attrs);
-                break;
-            
-            case 'checkbox':
-                $this->render_checkbox($node_id, $display_name, $param, $rgb_attrs);
-                break;
-            
-            case 'color':
-                $this->render_color_options($node_id, $display_name, $param, $rgb_attrs);
-                break;
-            
-            case 'dropdown':
-                $this->render_dropdown($node_id, $display_name, $param, $rgb_attrs);
-                break;
-        }
-        
-        echo '</div>'; // End polygonjs-parameter
 
         if (isset($_GET['debug']) && !empty($helper_params)) {
             echo '<!-- Found ' . count($helper_params) . ' helper parameters, but not displaying them here -->';
